@@ -1,0 +1,205 @@
+{
+	"items": {
+		"properties": {
+			"associateId": {
+				"description": "0 to N identifiers to associate the event for a specific UE or flow.",
+				"items": {
+					"properties": {
+						"type": {
+							"description": "Numeric value (0-255) corresponding to specified type of identifier as following:\n0 = reserved.\n1= UE_IPv4_ADDRESS.\n2 = UE_IPV6_ADDRESS.\n3 = NATED_IP_ADDRESS.\n4 = GTP_TEID.",
+							"enum": [
+								"SEE_DESCRIPTION"
+							],
+							"type": "string",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "Enum"
+						},
+						"value": {
+							"description": "Value for the identifier.",
+							"type": "string",
+							"x-etsi-mec-cardinality": "1",
+							"x-etsi-mec-origin-type": "String"
+						}
+					},
+					"required": [
+						"type",
+						"value"
+					],
+					"type": "object",
+					"x-etsi-ref": "6.5.4"
+				},
+				"type": "array",
+				"x-etsi-mec-cardinality": "0..N",
+				"x-etsi-mec-origin-type": "AssociateId"
+			},
+			"carrierAggregationMeasInfo": {
+				"description": "This parameter can be repeated to contain information of all the carriers assign for Carrier Aggregation up to M.",
+				"type": "object",
+				"x-etsi-mec-cardinality": "0..M",
+				"x-etsi-mec-origin-type": "Structure (inlined)"
+			},
+			"ecgi": {
+				"properties": {
+					"cellId": {
+						"description": "String representing the E-UTRAN Cell Identity. Encoded as a bit string (size (28)) as defined in ETSI TS 136 413 [i.3].",
+						"type": "string"
+					},
+					"plmn": {
+						"properties": {
+							"mcc": {
+								"description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+								"type": "string",
+								"x-etsi-mec-cardinality": "1",
+								"x-etsi-mec-origin-type": "String"
+							},
+							"mnc": {
+								"description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+								"type": "string",
+								"x-etsi-mec-cardinality": "1",
+								"x-etsi-mec-origin-type": "String"
+							}
+						},
+						"required": [
+							"mcc",
+							"mnc"
+						],
+						"type": "object",
+						"x-etsi-ref": "6.5.5"
+					}
+				},
+				"required": [
+					"plmn",
+					"cellId"
+				],
+				"type": "object",
+				"x-etsi-ref": "6.5.6"
+			},
+			"eutranNeighbourCellMeasInfo": {
+				"description": "This parameter can be repeated to contain information of all the neighbouring cells up to N.",
+				"items": {
+					"type": "object"
+				},
+				"type": "array",
+				"x-etsi-mec-cardinality": "0..N",
+				"x-etsi-mec-origin-type": "Structure (inlined)"
+			},
+			"heightUe": {
+				"description": "Indicates height of the UE in meters relative to the sea level as defined in ETSI TS 136.331 [i.7].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "Int"
+			},
+			"newRadioMeasInfo": {
+				"description": "5G New Radio secondary serving cells measurement information.",
+				"items": {
+					"type": "object"
+				},
+				"type": "array",
+				"x-etsi-mec-cardinality": "0..N",
+				"x-etsi-mec-origin-type": "Structure (inlined)"
+			},
+			"newRadioMeasNeiInfo": {
+				"description": "Measurement quantities concerning the 5G NR neighbours.",
+				"items": {
+					"type": "object"
+				},
+				"type": "array",
+				"x-etsi-mec-cardinality": "0..N",
+				"x-etsi-mec-origin-type": "Structure (inlined)"
+			},
+			"notificationType": {
+				"description": "Shall be set to \"MeasRepUeNotification\".",
+				"type": "string",
+				"x-etsi-mec-cardinality": "1",
+				"x-etsi-mec-origin-type": "String"
+			},
+			"rsrp": {
+				"description": "Reference Signal Received Power as defined in ETSI TS 136 214 [i.5].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "1",
+				"x-etsi-mec-origin-type": "Uint8"
+			},
+			"rsrpEx": {
+				"description": "Extended Reference Signal Received Power, with value mapping defined in ETSI TS 136 133 [i.16].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "Uint8"
+			},
+			"rsrq": {
+				"description": "Reference Signal Received Quality as defined in ETSI TS 136 214 [i.5].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "1",
+				"x-etsi-mec-origin-type": "Uint8"
+			},
+			"rsrqEx": {
+				"description": "Extended Reference Signal Received Quality, with value mapping defined in ETSI TS 136 133 [i.16].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "Uint8"
+			},
+			"sinr": {
+				"description": "Reference Signal \"Signal to Interference plus Noise Ratio\", with value mapping defined in ETSI TS 136 133 [i.16].",
+				"type": "integer",
+				"x-etsi-mec-cardinality": "0..1",
+				"x-etsi-mec-origin-type": "Uint8"
+			},
+			"timeStamp": {
+				"properties": {
+					"nanoSeconds": {
+						"type": "number"
+					},
+					"seconds": {
+						"type": "number"
+					}
+				},
+				"required": [
+					"seconds",
+					"nanoSeconds"
+				],
+				"type": "object",
+				"x-etsi-ref": "6.5.3"
+			},
+			"trigger": {
+				"description": "As defined in Ref ETSI TS 136 331 [i.7]",
+				"enum": [
+					"0 = NOT_AVAILABLE",
+					"1 = PERIODICAL_REPORT_STRONGEST_CELLS",
+					"2 = PERIODICAL_REPORT_STRONGEST_CELLS_FOR_SON",
+					"3 = PERIODICAL_REPORT_CGI",
+					"4 = INTRA_PERIODICAL_REPORT_STRONGEST_CELLS",
+					"5 = INTRA_PERIODICAL_REPORT_CGI",
+					"10 = EVENT_A1",
+					"11 = EVENT_A2",
+					"12 = EVENT_A3",
+					"13 = EVENT_A4",
+					"14 = EVENT_A5",
+					"15 = EVENT_A6",
+					"20 = EVENT_B1",
+					"21 = EVENT_B2",
+					"20 = EVENT_B1-NR",
+					"21 = EVENT_B2-NR",
+					"30 = EVENT_C1",
+					"31 = EVENT_C2",
+					"40 = EVENT_W1",
+					"41 = EVENT_W2",
+					"42 = EVENT_W3",
+					"50 = EVENT_V1",
+					"51 = EVENT_V2",
+					"60 = EVENT_H1",
+					"61 = EVENT_H2"
+				],
+				"type": "string"
+			}
+		},
+		"type": "object"
+	},
+	"required": [
+		"notificationType",
+		"ecgi",
+		"rsrp",
+		"rsrq",
+		"trigger"
+	],
+	"type": "object",
+	"x-etsi-ref": "6.4.6"
+}

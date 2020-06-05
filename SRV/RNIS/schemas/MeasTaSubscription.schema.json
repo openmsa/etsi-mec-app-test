@@ -1,0 +1,52 @@
+{
+	"properties": {
+		"_links": {
+			"description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+			"type": "object",
+			"x-etsi-mec-cardinality": "0..1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"callbackReference": {
+			"description": "URI selected by the service consumer to receive notifications on the subscribed RNIS information. This shall be included both in the request and in response.",
+			"format": "uri",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "URI"
+		},
+		"expiryDeadline": {
+			"properties": {
+				"nanoSeconds": {
+					"type": "number"
+				},
+				"seconds": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"seconds",
+				"nanoSeconds"
+			],
+			"type": "object",
+			"x-etsi-ref": "6.5.3"
+		},
+		"filterCriteriaAssoc": {
+			"description": "List of filtering criteria for the subscription. Any filtering criteria from below, which is included in the request, shall also be included in the response.",
+			"type": "object",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"subscriptionType": {
+			"description": "Shall be set to \"MeasTaSubscription\".",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "String"
+		}
+	},
+	"required": [
+		"subscriptionType",
+		"callbackReference",
+		"filterCriteriaAssoc"
+	],
+	"type": "object",
+	"x-etsi-ref": "6.3.7"
+}

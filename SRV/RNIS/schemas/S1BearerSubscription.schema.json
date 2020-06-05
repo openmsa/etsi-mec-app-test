@@ -1,0 +1,62 @@
+{
+	"properties": {
+		"S1BearerSubscriptionCriteria": {
+			"description": "As defined below.",
+			"type": "object",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"_links": {
+			"description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+			"type": "object",
+			"x-etsi-mec-cardinality": "0..1",
+			"x-etsi-mec-origin-type": "Structure (inlined)"
+		},
+		"callbackReference": {
+			"description": "URI selected by the service consumer, to receive notifications on the subscribed RNIS information. This shall be included in the request and response.",
+			"format": "uri",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "URI"
+		},
+		"eventType": {
+			"description": "Description of the subscribed event. The event is included both in the request and in the response. \nFor the eventType, the following values are currently defined:\n0 = RESERVED.\n1 = S1_BEARER_ESTABLISH.\n2 = S1_BEARER_MODIFY.\n3 = S1_BEARER_RELEASE.",
+			"items": {
+				"type": "string"
+			},
+			"type": "array",
+			"x-etsi-mec-cardinality": "1..N",
+			"x-etsi-mec-origin-type": "Enum"
+		},
+		"expiryDeadline": {
+			"properties": {
+				"nanoSeconds": {
+					"type": "number"
+				},
+				"seconds": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"seconds",
+				"nanoSeconds"
+			],
+			"type": "object",
+			"x-etsi-ref": "6.5.3"
+		},
+		"subscriptionType": {
+			"description": "Shall be set to \"S1BearerSubscription\".",
+			"type": "string",
+			"x-etsi-mec-cardinality": "1",
+			"x-etsi-mec-origin-type": "String"
+		}
+	},
+	"required": [
+		"subscriptionType",
+		"callbackReference",
+		"eventType",
+		"S1BearerSubscriptionCriteria"
+	],
+	"type": "object",
+	"x-etsi-ref": "6.3.9"
+}

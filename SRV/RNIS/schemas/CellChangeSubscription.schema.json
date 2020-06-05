@@ -1,0 +1,73 @@
+{
+        "properties": {
+          "_links": {
+            "description": "Hyperlink related to the resource. This shall be only included in the HTTP responses and in HTTP PUT requests.",
+            "type": "object",
+            "properties": {
+              "self": {
+                "properties": {
+                  "href": {
+                    "description": "URI referring to a resource",
+                    "format": "uri",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "URI"
+                  }
+                },
+                "required": [
+                  "href"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.2"
+              }
+            },
+            "required": [
+              "self"
+            ],
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "callbackReference": {
+            "description": "URI selected by the service consumerto receive notifications on the subscribed RNIS information. This shall be included both in the request and in response.",
+            "format": "uri",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "URI"
+          },
+          "expiryDeadline": {
+            "properties": {
+              "nanoSeconds": {
+                "type": "number"
+              },
+              "seconds": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.3"
+          },
+          "filterCriteriaAssocHo": {
+            "description": "List of filtering criteria for the subscription. Any filtering criteria from below, which is included in the request, shall also be included in the response.",
+            "type": "object",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "subscriptionType": {
+            "description": "Shall be set to \"CellChangeSubscription\".",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          }
+        },
+        "required": [
+          "subscriptionType",
+          "callbackReference",
+          "filterCriteriaAssocHo"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.3.2"
+      }

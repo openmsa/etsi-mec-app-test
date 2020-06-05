@@ -10,10 +10,11 @@ Library    JSONSchemaLibrary    schemas/
 Check Subscription
     [Arguments]    ${received_value}    ${expected_value}
     Should Be Equal    ${received_value['_links']['self']}    ${LINKS_SELF}
-    :FOR  ${item}  IN  @{received_value['subscription']}
-    \  Exit For Loop If    ${item} == ${expected_value}
-    Log    Item found ${item}
-    [return]    ${item}
+    ${length}    Get Length    ${received_value['subscription']}
+    :FOR  ${item}  IN RANGE    0    ${length} 
+    \  Exit For Loop If    ${received_value['subscription'][${item}]} == ${expected_value}
+    Log    Item found ${received_value['subscription'][${item}]}
+    [return]    ${received_value['subscription'][${item}]}
 
 
 Check CellChangeSubscription
@@ -24,23 +25,25 @@ Check CellChangeSubscription
 Check RabInfo
     [Arguments]    ${received_value}
     log    ${received_value}
-    Should Be Equal    ${received_value['appInsId']}    ${APP_INS_ID}
-    Should Not Contain    ${received_value['requestId']}    ""
-    Should Be Equal    ${received_value['cellUserInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
-    # TODO How to check the presence of a field
+    Should Be Equal As Strings   ${received_value['appInstanceId']}    ${APP_INS_ID}
+    Should Not Be Empty    ${received_value['requestId']}
+    Should Be Equal As Strings    ${received_value['cellUserInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
 
 
 Check PlmnInfo
     [Arguments]    ${received_value}
     log    ${received_value}
-    Should Be Equal    ${received_value['appInsId']}    ${APP_INS_ID}
-    Should Not Contain    ${received_value['plmn'][0]['mcc']}    ""
-    Should Not Contain    ${received_value['plmn'][0]['mnc']}    ""
-    # TODO How to check the presence of a field
+    Should Be Equal As Strings   ${received_value['appInstanceId']}    ${APP_INS_ID}
+    Should Not Be Empty    ${received_value['plmn'][0]['mcc']}    
+    Should Not Be Empty    ${received_value['plmn'][0]['mnc']}    
 
 
 Check S1BearerInfo
     [Arguments]    ${received_value}
     log    ${received_value}
-    #Should Not Contain    ${received_value['s1UeInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
-    # TODO How to check the presence of a field
+    Should Be Equal As Strings    ${received_value['s1UeIffo']['ecgi']['cellId']}    ${CELL_ID}
+    
+Check L2MeasInfo
+    [Arguments]    ${received_value}
+    log    ${received_value}
+    Should Be Equal As Strings    ${received_value['cellInfo']['ecgi']['cellId']}    ${CELL_ID}

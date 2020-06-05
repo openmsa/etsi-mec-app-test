@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "properties": {
+    "_links": {
+      "description": "List of hyperlinks related to the resource.",
+      "properties": {
+        "self": {
+          "properties": {
+            "href": {
+              "description": "URI referring to a resource",
+              "format": "uri",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "URI"
+            }
+          },
+          "required": [
+            "href"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.2"
+        },
+        "subscription": {
+          "description": "A link to a subscription.",
+          "items": {
+            "type": "object"
+          },
+          "properties": {
+            "href": {
+              "description": "The URI referring to the subscription.",
+              "format": "uri",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "URI"
+            },
+            "subscriptionType": {
+              "type": "string",
+              "description": "Type of a subscription. The string shall be set according to the \"subscriptionType\" attribute of the associated subscription data  type event defined in clause 6.3.\n",
+              "enum": [
+                "cell_change",
+                "rab_est",
+                "rab_mod",
+                "rab_rel",
+                "meas_rep_ue",
+                "nr_meas_rep_ue",
+                "timing_advance_ue",
+                "ca_reconf",
+                "s1_bearer"
+              ]
+            }
+          },
+          "required": [
+            "href",
+            "subscriptionType"
+          ],
+          "type": "array",
+          "x-etsi-mec-cardinality": "0..N",
+          "x-etsi-mec-origin-type": "Structure (inlined)"
+        }
+      },
+      "required": [
+        "self"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "1",
+      "x-etsi-mec-origin-type": "Structure (inlined)"
+    }
+  },
+  "required": [
+    "_links"
+  ],
+  "x-etsi-ref": "6.3.10"
+}
