@@ -143,5 +143,5 @@ Update a DNS Rule
     
 Update a DNS Rule with invalid etag
     [Arguments]    ${appInstanceId}    ${dnsRuleId}    ${content}
-    Set Headers    {"If-Match": ${INVALID_ETAG}}
+    Set Headers    {"If-Match": "${INVALID_ETAG}"}
     Update a DNS Rule    ${appInstanceId}    ${dnsRuleId}    ${content}
