@@ -212,7 +212,7 @@ TC_MEC_SRV_FAIS_006_OK
     Create a new subscription    OnuAlarmSubscription
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is    OnuAlarmSubscription
-    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    "OnuAlarmSubscription"
+    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    OnuAlarmSubscription
 
 
 
@@ -239,7 +239,7 @@ TC_MEC_SRV_FAIS_007_OK
     Get an individual subscription     ${ONU_ALARM_SUBSCRIPTION_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    OnuAlarmSubscription
-    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    "OnuAlarmSubscription"
+    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    OnuAlarmSubscription
 
 
 TC_MEC_SRV_FAIS_007_NF
@@ -265,7 +265,7 @@ TC_MEC_SRV_FAIS_008_OK
     Update subscription    ${ONU_ALARM_SUBSCRIPTION_ID}    OnuAlarmSubscriptionUpdate
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    OnuAlarmSubscription
-    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    "OnuAlarmSubscription"
+    Check Result Contains    ${response['body']['OnuAlarmSubscription']}    subscriptionType    OnuAlarmSubscription
 
 
 TC_MEC_SRV_FAIS_008_BR
