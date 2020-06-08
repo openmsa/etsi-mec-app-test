@@ -42,7 +42,7 @@ TC_MEC_SRV_DNS_002_OK
     Get individual DNS rule    ${APP_INSTANCE_ID}    ${DNS_RULE_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    DnsRule
-    Check Result Contains    ${response['body']}    dnsRuleId    ${DNS_RULE_ID}
+    Check Response Contains    ${response['body']}    dnsRuleId    ${DNS_RULE_ID}
 
 
 TC_MEC_SRV_DNS_002_NF
@@ -69,7 +69,7 @@ TC_MEC_SRV_DNS_003_OK
     Update a DNS Rule    ${APP_INSTANCE_ID}    ${DNS_RULE_ID}    DnsRuleUpdate
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    DnsRule
-    Check Result Contains    ${response['body']}    ipAddress    ${SOME_IP_ADDRESS}
+    Check Response Contains    ${response['body']}    ipAddress    ${SOME_IP_ADDRESS}
 
 
 TC_MEC_SRV_DNS_003_BR
