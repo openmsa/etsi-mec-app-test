@@ -32,7 +32,7 @@
 						"type": "object",
 						"required": [
 							"href",
-							"rel"
+							"subscriptionType"
 						],
 						"properties": {
 							"href": {
@@ -41,7 +41,7 @@
 								"format": "uri",
 								"example": "/mecSerMgmtApi/example"
 							},
-							"rel": {
+							"subscriptionType": {
 								"description": "The value shall be se to SerAvailabilityNotificationSubscription.",
 								"type": "string"
 							}
