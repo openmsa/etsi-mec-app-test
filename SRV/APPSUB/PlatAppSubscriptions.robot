@@ -52,8 +52,8 @@ TC_MEC_SRV_APPSUB_002_OK
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is    AppTerminationNotificationSubscription
     Check HTTP Response Header Contains    Location
-    Check Result Contains    ${response['body']}    subscriptionType    "AppTerminationNotificationSubscription"
-    Check Result Contains    ${response['body']}    callbackReference    ${APP_TERM_NOTIF_CALLBACK_URI}
+    Check Response Contains    ${response['body']}    subscriptionType    AppTerminationNotificationSubscription
+    Check Response Contains    ${response['body']}    callbackReference    ${APP_TERM_NOTIF_CALLBACK_URI}
 
 
 TC_MEC_SRV_APPSUB_003_OK
@@ -68,7 +68,7 @@ TC_MEC_SRV_APPSUB_003_OK
     Get individual subscription    ${APP_INSTANCE_ID}    ${SUBSCRIPTION_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    AppTerminationNotificationSubscription
-    Check Result Contains    ${response['body']}    subscriptionType    "AppTerminationNotificationSubscription"
+    Check Response Contains    ${response['body']}    subscriptionType    AppTerminationNotificationSubscription
 
 
 TC_MEC_SRV_APPSUB_003_NF

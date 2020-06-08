@@ -52,7 +52,7 @@ TC_MEC_SRV_SAQ_002_OK
     Get specific MEC service    ${SERVICE_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    ServiceInfo
-    Check Result Contains    ${response['body']}    serInstanceId    ${SERVICE_ID}
+    Check Response Contains    ${response['body']}    serInstanceId    ${SERVICE_ID}
 
 
 TC_MEC_SRV_SAQ_002_NF

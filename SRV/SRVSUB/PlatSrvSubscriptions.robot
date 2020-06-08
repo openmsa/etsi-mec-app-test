@@ -52,8 +52,8 @@ TC_MEC_SRV_SRVSUB_002_OK
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is    SerAvailabilityNotificationSubscription
     Check HTTP Response Header Contains    Location
-    Check Result Contains    ${response['body']}    subscriptionType    "SerAvailabilityNotificationSubscription"
-    Check Result Contains    ${response['body']}    callbackReference    ${APP_SRVSUB_NOTIF_CALLBACK_URI}
+    Check Response Contains    ${response['body']}    subscriptionType    "SerAvailabilityNotificationSubscription"
+    Check Response Contains    ${response['body']}    callbackReference    ${APP_SRVSUB_NOTIF_CALLBACK_URI}
 
 
 TC_MEC_SRV_SRVSUB_002_BR
@@ -81,7 +81,7 @@ TC_MEC_SRV_SRVSUB_003_OK
     Get individual subscription    ${APP_INSTANCE_ID}    ${SUBSCRIPTION_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    SerAvailabilityNotificationSubscription
-    Check Result Contains    ${response['body']}    subscriptionType    "SerAvailabilityNotificationSubscription"
+    Check Response Contains    ${response['body']}    subscriptionType    SerAvailabilityNotificationSubscription
 
 
 TC_MEC_SRV_SRVSUB_003_NF

@@ -47,7 +47,7 @@ TC_MEC_SRV_APPSAQ_002_OK
     ...    Check that the IUT notifies the authorised relevant (subscribed) application
     ...    instances when a new service for a given application instance is registered
     ...
-    ...    Reference    ETSI GS MEC 011 V2.0.9, clause 8.2.6.3.4
+    ...    Reference    ETSI GS MEC 011 V2.1.1, clause 8.2.6.3.4
     ...    OpenAPI    https://forge.etsi.org/rep/mec/gs011-app-enablement-api/blob/master/MecServiceMgmtApi.yaml#/definitions/ServiceInfo
 
     [Tags]    PIC_MEC_PLAT    PIC_SERVICES
@@ -55,7 +55,7 @@ TC_MEC_SRV_APPSAQ_002_OK
     Check HTTP Response Status Code Is    201
     Check HTTP Response Body Json Schema Is    ServiceInfo
     Check HTTP Response Header Contains    Location
-    Check Result Contains    ${response['body']}    serName    ${NEW_SERVICE_NAME}
+    Check Response Contains    ${response['body']}    serName    ${NEW_SERVICE_NAME}
 
 
 TC_MEC_SRV_APPSAQ_002_BR
@@ -96,7 +96,7 @@ TC_MEC_SRV_APPSAQ_003_OK
     Get individual service    ${APP_INSTANCE_ID}    ${SERVICE_ID}
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    ServiceInfo
-    Check Result Contains    ${response['body']}    serInstanceId    ${SERVICE_ID}
+    Check Response Contains    ${response['body']}    serInstanceId    ${SERVICE_ID}
 
 
 TC_MEC_SRV_APPSAQ_003_NF
@@ -123,7 +123,7 @@ TC_MEC_SRV_APPSAQ_004_OK
     Update service    ${APP_INSTANCE_ID}    ${SERVICE_ID}    ServiceInfoUpdated
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is    ServiceInfo
-    Check Result Contains    ${response['body']}    version    ${SVC_NEW_VERSION}
+    Check Response Contains    ${response['body']}    version    ${SVC_NEW_VERSION}
 
 
 TC_MEC_SRV_APPSAQ_004_BR
