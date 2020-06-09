@@ -42,13 +42,6 @@
 		"filteringCriteria": {
 			"description": "Filtering criteria to match services for which events are requested to be reported. If absent, matches all services. All child attributes are combined with the logical  \"AND\" operation.",
 			"type": "object",
-			"not": {
-				"required": [
-					"serInstanceIds",
-					"serNames",
-					"serCategories"
-				]
-			},
 			"properties": {
 				"serInstanceIds": {
 					"description": "Identifiers of service instances about which to report events.",
