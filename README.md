@@ -5,8 +5,6 @@ This repositories contains the test specifications and test adapter code for MEC
 
 Latest publicly available drafts are available at https://docbox.etsi.org/isg/mec/open.
 
-**{- Disclaimer: The content of this repository is related to a DRAFT, i.e. a working document, of ETSI ISG MEC. -}**
-{-The content of the repository is provided for information only and is still under development. It may be updated, replaced, or removed at any time. Do not use as reference material. -} 
 
 For more information on ETSI ISG Multi-access Edge Computing (MEC), visit https://www.etsi.org/technologies/multi-access-edge-computing.
 
@@ -29,7 +27,25 @@ NOTE All draft can be found in the 'IETF XML Registry', accessible [here](https:
 
 ## Installation
 
-TODO
+The main precondition for running the tests is having [Robot Framework](http://robotframework.org/) installed.
+The [Robot Framework Installation Instructions](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) provide full details of the installation procedure.
+For those familiar with installing Python packages with [pip](http://pip-installer.org/) package manager, the following command can be run to install [Robot Framework](http://robotframework.org/):
+
+[Robot Framework](http://robotframework.org/) >3.0 is recommended. It requires Python 3.
+
+### Robot Framework Required Libraries
+The [Robot Framework](http://robotframework.org/) Test Cases in this repository depend on the following libraries:
+
+* [RESTInstance](https://github.com/asyrjasalo/RESTinstance)
+* [DependencyLibrary](https://github.com/mentalisttraceur/robotframework-dependencylibrary)
+* [JSONLibrary](https://github.com/nottyo/robotframework-jsonlibrary)
+* [JSONSchemaLibrary](https://github.com/jstaffans/robotframework-jsonschemalibrary)
+* [Requests](https://pypi.org/project/robotframework-requests/)
+
+A [pip](http://pip-installer.org/) [requirements file](https://forge.etsi.org/rep/mec/gs032p3-robot-test-suite/blob/2.1.1-fix-plu/requirements.txt) is provided to ease the installation of the required python libraries, as follows:
+```
+$ pip install -r requirements.txt
+```
 
 
 ## Usage
