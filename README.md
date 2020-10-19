@@ -50,8 +50,50 @@ $ pip install -r requirements.txt
 
 ## Usage
 
-TODO
+The usage of these Test Suites goes through different steps. First of all, you should be aware of the structure's folder. After that, some configuration steps are needed and at the end, you can run the test.  
 
+### Folder structure
+The Test folder is structured as follow:
+
+### Test Suite files
+```
+<group>/<feature>/<interface>  
+
+e.g.: SRV/APPSUB/PlatAppSubscriptions.robot
+```
+
+### Environmental files
+In the same folder, you will find two subfolders 
+* environment
+* jsons
+
+The **environment** folder contain a  file, called *variables.txt*, which contains all the information necessary to reach and interact with the SUT
+```
+*** Variables ***
+${MEC-APP_SCHEMA}                   http  
+${MEC-APP_HOST}                     192.168.56.1  
+${MEC-APP_PORT}                     8081  
+...
+```
+This file should be updated before running the tests.
+
+The **json** folder contains the json payloads necessary to perform the POST/PUT/PATCH requests. 
+These files should contain the exact content to be sent.
+
+
+### Execution of the test cases
+The [Robot Framework](http://robotframework.org/) Test Cases in this repository can be executed with the following command:
+```
+$ robot <name_of_the_robot_file>
+```
+
+To execute all test case files in a directory recursively, just give the directory as an argument. You can also give multiple files or directories in one go and use various command-line options supported by [Robot Framework](http://robotframework.org/). 
+
+For more information about the command-line usage, you can run:
+```
+$ robot --help
+```
+The [Robot Framework User Guide](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#executing-test-cases) provides full details on how to execute tests in general.
 
 ## How to Report a Bug
 
