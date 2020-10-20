@@ -1,0 +1,158 @@
+{
+        "properties": {
+          "associateId": {
+            "description": "0 to N identifiers to associate the event for a specific UE or flow.",
+            "items": {
+              "properties": {
+                "type": {
+                  "description": "Numeric value (0-255) corresponding to specified type of identifier as following:\n0 = reserved.\n1= UE_IPv4_ADDRESS.\n2 = UE_IPV6_ADDRESS.\n3 = NATED_IP_ADDRESS.\n4 = GTP_TEID.",
+                  "enum": [
+                    "SEE_DESCRIPTION"
+                  ],
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "Enum"
+                },
+                "value": {
+                  "description": "Value for the identifier.",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "String"
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ],
+              "type": "object",
+              "x-etsi-ref": "6.5.4"
+            },
+            "type": "array",
+            "x-etsi-mec-cardinality": "0..N",
+            "x-etsi-mec-origin-type": "AssociateId"
+          },
+          "hoStatus": {
+            "description": "Indicate the status of the UE handover procedure. Values are defined as following:\n1 = IN_PREPARATION.\n2 = IN_EXECUTION.\n3 = COMPLETED.\n4 = REJECTED.\n5 = CANCELLED.",
+            "enum": [
+              "SEE_DESCRIPTION"
+            ],
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "Enum"
+          },
+          "notificationType": {
+            "description": "Shall be set to \"CellChangeNotification\".",
+            "type": "string",
+            "x-etsi-mec-cardinality": "1",
+            "x-etsi-mec-origin-type": "String"
+          },
+          "srcEcgi": {
+            "properties": {
+              "cellId": {
+                "description": "String representing the E-UTRAN Cell Identity. Encoded as a bit string (size (28)) as defined in ETSI TS 136 413 [i.3].",
+                "type": "string"
+              },
+              "plmn": {
+                "properties": {
+                  "mcc": {
+                    "description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  },
+                  "mnc": {
+                    "description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "mcc",
+                  "mnc"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.5"
+              }
+            },
+            "required": [
+              "plmn",
+              "cellId"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.6"
+          },
+          "tempUeId": {
+            "description": "The temporary identifier allocated for the specific UE as defined below.",
+            "type": "object",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Structure (inlined)"
+          },
+          "timeStamp": {
+            "properties": {
+              "nanoSeconds": {
+                "type": "number"
+              },
+              "seconds": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "seconds",
+              "nanoSeconds"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.3"
+          },
+          "trgEcgi": {
+            "description": "E-UTRAN CelI Global Identifier of the target cell.\nNOTE: Cardinality N is valid only in case of statuses IN_PREPARATION, REJECTED and CANCELLED.",
+            "items": {
+              "properties": {
+                "cellId": {
+                  "description": "String representing the E-UTRAN Cell Identity. Encoded as a bit string (size (28)) as defined in ETSI TS 136 413 [i.3].",
+                  "type": "string"
+                },
+                "plmn": {
+                  "properties": {
+                    "mcc": {
+                      "description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                      "type": "string",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "String"
+                    },
+                    "mnc": {
+                      "description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                      "type": "string",
+                      "x-etsi-mec-cardinality": "1",
+                      "x-etsi-mec-origin-type": "String"
+                    }
+                  },
+                  "required": [
+                    "mcc",
+                    "mnc"
+                  ],
+                  "type": "object",
+                  "x-etsi-ref": "6.5.5"
+                }
+              },
+              "required": [
+                "plmn",
+                "cellId"
+              ],
+              "type": "object",
+              "x-etsi-ref": "6.5.6"
+            },
+            "type": "array",
+            "x-etsi-mec-cardinality": "1..N",
+            "x-etsi-mec-origin-type": "Ecgi"
+          }
+        },
+        "required": [
+          "notificationType",
+          "srcEcgi",
+          "trgEcgi",
+          "hoStatus"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.4.2"
+      }

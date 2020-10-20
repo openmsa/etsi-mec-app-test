@@ -1,0 +1,133 @@
+{
+  "trafficRuleId": "traffic_rule_01",
+  "filterType": "FLOW",
+  "priority": 1,
+  "trafficFilter": [
+    {
+      "srcAddress": [
+        "192.168.1.1",
+        "192.168.2.1",
+        "192.168.3.1"
+      ],
+      "dstAddress": [
+        "192.168.1.2",
+        "192.168.2.2",
+        "192.168.3.2"
+      ],
+      "srcPort": [
+        "30078",
+        "1029",
+        "30089"
+      ],
+      "dstPort": [
+        "30099",
+        "30098",
+        "30097"
+      ],
+      "protocol": [
+        "TCP",
+        "HTTP",
+        "UDP"
+      ],
+      "token": [
+        "occaecat",
+        "reprehenderit esse",
+        "enim ipsum Lorem",
+        "nulla ad sed deserunt",
+        "irure"
+      ],
+      "srcTunnelAddress": [
+        "159.10.1.1",
+        "159.10.2.1",
+        "159.10.3.1"
+      ],
+      "tgtTunnelAddress": [
+        "159.10.1.2",
+        "159.10.2.2",
+        "159.10.3.2"
+      ],
+      "srcTunnelPort": [
+        "5566",
+        "5567",
+        "5568"
+      ],
+      "dstTunnelPort": [
+        "5576",
+        "5578",
+        "5579"
+      ],
+      "qCI": 1,
+      "dSCP": 0,
+      "tC": 1
+    },
+    {
+      "srcAddress": [
+        "192.157.1.1",
+        "192.157.2.1",
+        "192.157.3.1"
+      ],
+      "dstAddress": [
+        "192.157.1.2",
+        "192.157.2.2",
+        "192.157.3.2"
+      ],
+      "srcPort": [
+        "30078",
+        "1029",
+        "30089"
+      ],
+      "dstPort": [
+        "30099",
+        "30098",
+        "30097"
+      ],
+      "protocol": [
+        "TCP",
+        "HTTP",
+        "UDP"
+      ],
+      "token": [
+        "occaecat",
+        "reprehenderit esse",
+        "enim ipsum Lorem",
+        "nulla ad sed deserunt",
+        "irure"
+      ],
+      "srcTunnelAddress": [
+        "159.20.1.1",
+        "159.20.2.1",
+        "159.20.3.1"
+      ],
+      "tgtTunnelAddress": [
+        "159.20.1.2",
+        "159.20.2.2",
+        "159.20.3.2"
+      ],
+      "srcTunnelPort": [
+        "5566",
+        "5567",
+        "5568"
+      ],
+      "dstTunnelPort": [
+        "5576",
+        "5578",
+        "5579"
+      ],
+      "qCI": 2,
+      "dSCP": 0,
+      "tC": 4
+    }
+  ],
+  "action": "DROP",
+  "state": "ACTIVE",
+  "dstInterface": {
+    "interfaceType": "TUNNEL",
+    "tunnelInfo": {
+      "tunnelType": "GTP_U",
+      "tunnelDstAddress": "169.54.61.15",
+      "tunnelSrcAddress": "169.54.61.31"
+    },
+    "srcMacAddress": "fc:3f:2b:42:dc:ba",
+    "dstMacAddress": "02:42:2c:58:6a:7d"
+  }
+}

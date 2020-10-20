@@ -1,0 +1,64 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "appInstanceId": {
+        "description": "Unique identifier for the MEC application instance.",
+        "type": "string",
+        "x-etsi-mec-cardinality": "1",
+        "x-etsi-mec-origin-type": "String"
+      },
+      "plmn": {
+        "description": "Public Land Mobile Network Identity.",
+        "items": {
+          "properties": {
+            "mcc": {
+              "description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "mnc": {
+              "description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "String"
+            }
+          },
+          "required": [
+            "mcc",
+            "mnc"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.5"
+        },
+        "minItems": 1,
+        "type": "array",
+        "x-etsi-mec-cardinality": "1..N",
+        "x-etsi-mec-origin-type": "Plmn"
+      },
+      "timeStamp": {
+        "properties": {
+          "nanoSeconds": {
+            "type": "number"
+          },
+          "seconds": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "seconds",
+          "nanoSeconds"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.5.3"
+      }
+    },
+    "required": [
+      "appInstanceId",
+      "plmn"
+    ],
+    "x-etsi-ref": "6.2.2"
+  }
+}

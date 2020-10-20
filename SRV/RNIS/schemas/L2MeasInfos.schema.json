@@ -1,0 +1,252 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "cellInfo": {
+        "description": "The per cell measurement information as defined below.",
+        "items": {
+          "type": "object"
+        },
+        "properties": {
+          "dl_gbr_prb_usage_cell": {
+            "description": "It indicates the PRB usage for downlink GBR traffic, as defined in ETSI TS 136 314 [i.11] and ETSI TS 136 423 [i.12].",
+            "type": "integer",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Integer (0..100)"
+          },
+          "dl_nongbr_prb_usage_cell": {
+            "description": "It indicates (in percentage) the PRB usage for downlink non-GBR traffic, as defined in ETSI TS 136 314 [i.11] and ETSI TS 136 423 [i.12].",
+            "type": "integer",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Integer (0..100)"
+          },
+          "ecgi": {
+            "properties": {
+              "cellId": {
+                "description": "String representing the E-UTRAN Cell Identity. Encoded as a bit string (size (28)) as defined in ETSI TS 136 413 [i.3].",
+                "type": "string"
+              },
+              "plmn": {
+                "properties": {
+                  "mcc": {
+                    "description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  },
+                  "mnc": {
+                    "description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                    "type": "string",
+                    "x-etsi-mec-cardinality": "1",
+                    "x-etsi-mec-origin-type": "String"
+                  }
+                },
+                "required": [
+                  "mcc",
+                  "mnc"
+                ],
+                "type": "object",
+                "x-etsi-ref": "6.5.5"
+              }
+            },
+            "required": [
+              "plmn",
+              "cellId"
+            ],
+            "type": "object",
+            "x-etsi-ref": "6.5.6"
+          },
+          "ul_gbr_prb_usage_cell": {
+            "description": "It indicates (in percentage) the PRB usage for uplink GBR traffic, as defined in ETSI TS 136 314 [i.11] and ETSI TS 136 423 [i.12].",
+            "type": "integer",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Integer (0..100)"
+          },
+          "ul_nongbr_prb_usage_cell": {
+            "description": "It indicates (in percentage) the PRB usage for uplink non-GBR traffic, as defined in ETSI TS 136 314 [i.11] and ETSI TS 136 423 [i.12].",
+            "type": "integer",
+            "x-etsi-mec-cardinality": "0..1",
+            "x-etsi-mec-origin-type": "Integer (0..100)"
+          }
+        },
+        "required": [
+          "ecgi"
+        ],
+        "type": "array",
+        "x-etsi-mec-cardinality": "0..N",
+        "x-etsi-mec-origin-type": "Structure (inlined)"
+      },
+      "cellUEInfo": {
+        "description": "The per cell per UE layer 2 measurements information as defined below.",
+        "items": {
+          "type": "object"
+        },
+        "type": "array",
+        "x-etsi-mec-cardinality": "0..N",
+        "x-etsi-mec-origin-type": "Structure (inlined)"
+      },
+      "dl_gbr_data_volume_ue": {
+        "description": "It indicates the data volume of the downlink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "dl_gbr_pdr_cell": {
+        "description": "It indicates the packet discard rate in percentage of the downlink GBR traffic in a cell, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "dl_gbr_pdr_ue": {
+        "description": "It indicates the packet discard rate in percentage of the downlink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "dl_gbr_throughput_ue": {
+        "description": "It indicates the scheduled throughput of the downlink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "dl_nongbr_data_volume_ue": {
+        "description": "It indicates the data volume of the downlink non-GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "dl_nongbr_pdr_cell": {
+        "description": "It indicates the packet discard rate in percentage of the downlink non-GBR traffic in a cell, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "dl_nongbr_pdr_ue": {
+        "description": "It indicates the packet discard rate in percentage of the downlink nonGBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "dl_nongbr_throughput_ue": {
+        "description": "It indicates the scheduled throughput of the downlink nonGBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "number_of_active_ue_dl_gbr_cell": {
+        "description": "It indicates the number of active UEs with downlink GBR traffic, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "number_of_active_ue_dl_nongbr_cell": {
+        "description": "It indicates the number of active UEs with downlink non-GBR traffic, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "number_of_active_ue_ul_gbr_cell": {
+        "description": "It indicates the number of active UEs with uplink GBR traffic, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "number_of_active_ue_ul_nongbr_cell": {
+        "description": "It indicates the number of active UEs with uplink non-GBR traffic, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "received_dedicated_preambles_cell": {
+        "description": "It indicates (in percentage) the received dedicated preamples, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "received_randomly_selected _preambles_high_range_cell": {
+        "description": "It indicates (in percentage) the received randomly selected preambles in the high range, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "received_randomly_selected _preambles_low_range_cell": {
+        "description": "It indicates (in percentage) the received randomly selected preambles in the low range, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "timestamp": {
+        "properties": {
+          "nanoSeconds": {
+            "type": "number"
+          },
+          "seconds": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "seconds",
+          "nanoSeconds"
+        ],
+        "type": "object",
+        "x-etsi-ref": "6.5.3"
+      },
+      "ul_gbr_data_volume_ue": {
+        "description": "It indicates the data volume of the uplink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "ul_gbr_pdr_cell": {
+        "description": "It indicates the packet discard rate in percentage of the uplink GBR traffic in a cell, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "ul_gbr_pdr_ue": {
+        "description": "It indicates the packet discard rate in percentage of the uplink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "ul_gbr_throughput_ue": {
+        "description": "It indicates the scheduled throughput of the uplink GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "ul_nongbr_data_volume_ue": {
+        "description": "It indicates the data volume of the uplink non-GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "ul_nongbr_pdr_cell": {
+        "description": "It indicates the packet discard rate in percentage of the uplink non-GBR traffic in a cell, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "ul_nongbr_pdr_ue": {
+        "description": "It indicates the packet discard rate in percentage of the uplink nonGBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      },
+      "ul_nongbr_throughput_ue": {
+        "description": "It indicates the scheduled throughput of the uplink non-GBR traffic of a UE, as defined in ETSI TS 136 314 [i.11].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer"
+      },
+      "ul_total_prb_usage_cell": {
+        "description": "It indicates (in percentage) the PRB usage for total uplink traffic, as defined in ETSI TS 136 314 [i.11] and ETSI TS 136 423 [i.12].",
+        "type": "integer",
+        "x-etsi-mec-cardinality": "0..1",
+        "x-etsi-mec-origin-type": "Integer (0..100)"
+      }
+    },
+    "x-etsi-ref": "6.2.4a"
+  }
+}

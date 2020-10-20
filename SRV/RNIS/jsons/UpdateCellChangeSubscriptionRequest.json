@@ -1,0 +1,10 @@
+{
+  "subscriptionType": "CellChangeSubscription",
+  "callbackReference": "${HREF}",
+  "_links": {
+    "self": {
+      "href": "${LINKS_SELF}"
+    }
+  },
+  "filterCriteriaAssocHo": {}
+}

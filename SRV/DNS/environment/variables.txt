@@ -15,6 +15,8 @@ ${DNS_RULE_ID}                           e0deee2b-6e50-4f33-ab09-8bf0585025d3
 ${NON_ESISTENT_DNS_RULE_ID}              NON_ESISTENT_DNS_RULE_ID
 ${INVALID_ETAG}                     INVALID_ETAG
 
+${SOME_IP_ADDRESS}                   146.241.7.3
+
 # ${SUBSCRIPTION_TYPE}                MobilityProcedureSubscription
 # ${SUBSCRIPTION_ID}                  e0deee2b-6e50-4f33-ab09-8bf0585025d3
 # ${NON_EXISTENT_SUBSCRIPTION_ID}     NON_EXISTENT_SUBSCRIPTION_ID

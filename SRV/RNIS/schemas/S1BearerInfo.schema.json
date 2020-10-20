@@ -1,0 +1,175 @@
+{
+  "type": "object",
+  "properties": {
+    "s1UeIffo": {
+      "description": "1..N",
+      "properties": {
+        "associateId": {
+          "properties": {
+            "type": {
+              "description": "Numeric value (0-255) corresponding to specified type of identifier as following:\n0 = reserved.\n1= UE_IPv4_ADDRESS.\n2 = UE_IPV6_ADDRESS.\n3 = NATED_IP_ADDRESS.\n4 = GTP_TEID.",
+              "enum": [
+                "SEE_DESCRIPTION"
+              ],
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "Enum"
+            },
+            "value": {
+              "description": "Value for the identifier.",
+              "type": "string",
+              "x-etsi-mec-cardinality": "1",
+              "x-etsi-mec-origin-type": "String"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.4"
+        },
+        "ecgi": {
+          "properties": {
+            "cellId": {
+              "description": "String representing the E-UTRAN Cell Identity. Encoded as a bit string (size (28)) as defined in ETSI TS 136 413 [i.3].",
+              "type": "string"
+            },
+            "plmn": {
+              "properties": {
+                "mcc": {
+                  "description": "The Mobile Country Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "String"
+                },
+                "mnc": {
+                  "description": "The Mobile Network Code part of PLMN Identity as defined in ETSI TS 136 413 [i.3].",
+                  "type": "string",
+                  "x-etsi-mec-cardinality": "1",
+                  "x-etsi-mec-origin-type": "String"
+                }
+              },
+              "required": [
+                "mcc",
+                "mnc"
+              ],
+              "type": "object",
+              "x-etsi-ref": "6.5.5"
+            }
+          },
+          "required": [
+            "plmn",
+            "cellId"
+          ],
+          "type": "object",
+          "x-etsi-ref": "6.5.6"
+        },
+        "s1BearerInfoDetailed": {
+          "description": "1..N",
+          "properties": {
+            "erabId": {
+              "description": "The attribute that uniquely identifies a S1 bearer for a specific UE,  as defined in ETSI TS 136 413 [i.3].",
+              "type": "integer",
+              "x-etsi-mec-cardinality": 1,
+              "x-etsi-mec-origin-type": "Integer"
+            },
+            "enbInfo": {
+              "description": "S1 bearer information on eNB",
+              "properties": {
+                "ipAddress": {
+                  "type": "string",
+                  "description": "eNB transport layer address of this S1 bearer."
+                },
+                "tunnelId": {
+                  "type": "string",
+                  "description": "eNB GTP-U TEID of this S1 bearer."
+                }
+              },
+              "required": [
+                "ipAddress",
+                "tunnelId"
+              ]
+            },
+            "sGwInfo": {
+              "properties": {
+                "ipAddress": {
+                  "type": "string",
+                  "description": "SGW transport layer address of this S1 bearer."
+                },
+                "tunnelId": {
+                  "type": "string",
+                  "description": "SGW GTP-U TEID of this S1 bearer."
+                }
+              },
+              "required": [
+                "ipAddress",
+                "tunnelId"
+              ]
+            }
+          },
+          "required": [
+            "erabId",
+            "enbInfo"
+          ],
+          "type": "object",
+          "x-etsi-mec-cardinality": "Structure (inlined)",
+          "x-etsi-mec-origin-type": "Structure (inlined)"
+        },
+        "tempUeId": {
+          "description": "0..1",
+          "properties": {
+            "mmec": {
+              "description": "1",
+              "type": "string",
+              "x-etsi-mec-cardinality": "String",
+              "x-etsi-mec-origin-type": "String"
+            },
+            "mtmsi": {
+              "description": "1",
+              "type": "string",
+              "x-etsi-mec-cardinality": "String",
+              "x-etsi-mec-origin-type": "String"
+            }
+          },
+          "required": [
+            "mmec",
+            "mtmsi"
+          ],
+          "type": "object",
+          "x-etsi-mec-cardinality": "Structure (inlined)",
+          "x-etsi-mec-origin-type": "Structure (inlined)"
+        }
+      },
+      "required": [
+        "tempUeId",
+        "associateId",
+        "ecgi",
+        "s1BearerInfoDetailed"
+      ],
+      "type": "object",
+      "x-etsi-mec-cardinality": "Structure (inlined)",
+      "x-etsi-mec-origin-type": "Structure (inlined)"
+    },
+    "timeStamp": {
+      "properties": {
+        "nanoSeconds": {
+          "type": "number"
+        },
+        "seconds": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "seconds",
+        "nanoSeconds"
+      ],
+      "type": "object",
+      "x-etsi-ref": "6.5.3"
+    }
+  },
+  "required": [
+    "s1UeInfo"
+  ],
+  "x-etsi-ref": "6.2.4"
+}

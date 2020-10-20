@@ -1,10 +1,16 @@
-# MEC Testing Framework in Robot Framework
+# MEC Testing Framework in Robot Framework - GS 032-2
 
 ## Introduction
-This repositories contains the test specifications and test adapter code for MEC Testing project in Robot Framework
+This repositories contains the test specifications and test adapter code for MEC Testing project in Robot Framework.
+
+Latest publicly available drafts are available at https://docbox.etsi.org/isg/mec/open.
+
+
+For more information on ETSI ISG Multi-access Edge Computing (MEC), visit https://www.etsi.org/technologies/multi-access-edge-computing.
 
 ## Contact information
-Email at cti_support at etsi dot org
+
+Email at `cti_support` at `etsi` dot `org`.
 
 ## License
 Unless specified otherwise, the content of this repository and the files contained are released under the BSD-3-Clause license.
@@ -21,16 +27,78 @@ NOTE All draft can be found in the 'IETF XML Registry', accessible [here](https:
 
 ## Installation
 
-TODO
+The main precondition for running the tests is having [Robot Framework](http://robotframework.org/) installed.
+The [Robot Framework Installation Instructions](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst) provide full details of the installation procedure.
+For those familiar with installing Python packages with [pip](http://pip-installer.org/) package manager, the following command can be run to install [Robot Framework](http://robotframework.org/):
+
+[Robot Framework](http://robotframework.org/) >3.0 is recommended. It requires Python 3.
+
+### Robot Framework Required Libraries
+The [Robot Framework](http://robotframework.org/) Test Cases in this repository depend on the following libraries:
+
+* [RESTInstance](https://github.com/asyrjasalo/RESTinstance)
+* [DependencyLibrary](https://github.com/mentalisttraceur/robotframework-dependencylibrary)
+* [JSONLibrary](https://github.com/nottyo/robotframework-jsonlibrary)
+* [JSONSchemaLibrary](https://github.com/jstaffans/robotframework-jsonschemalibrary)
+* [Requests](https://pypi.org/project/robotframework-requests/)
+
+A [pip](http://pip-installer.org/) [requirements file](https://forge.etsi.org/rep/mec/gs032p3-robot-test-suite/blob/2.1.1-fix-plu/requirements.txt) is provided to ease the installation of the required python libraries, as follows:
+```
+$ pip install -r requirements.txt
+```
 
 
 ## Usage
 
-TODO
+The usage of these Test Suites goes through different steps. First of all, you should be aware of the structure's folder. After that, some configuration steps are needed and at the end, you can run the test.  
 
+### Folder structure
+The Test folder is structured as follow:
+
+### Test Suite files
+```
+<group>/<feature>/<interface>  
+
+e.g.: SRV/APPSUB/PlatAppSubscriptions.robot
+```
+
+### Environmental files
+In the same folder, you will find two subfolders 
+* environment
+* jsons
+
+The **environment** folder contain a  file, called *variables.txt*, which contains all the information necessary to reach and interact with the SUT
+```
+*** Variables ***
+${MEC-APP_SCHEMA}                   http  
+${MEC-APP_HOST}                     192.168.56.1  
+${MEC-APP_PORT}                     8081  
+...
+```
+This file should be updated before running the tests.
+
+The **json** folder contains the json payloads necessary to perform the POST/PUT/PATCH requests. 
+These files should contain the exact content to be sent.
+
+
+### Execution of the test cases
+The [Robot Framework](http://robotframework.org/) Test Cases in this repository can be executed with the following command:
+```
+$ robot <name_of_the_robot_file>
+```
+
+To execute all test case files in a directory recursively, just give the directory as an argument. You can also give multiple files or directories in one go and use various command-line options supported by [Robot Framework](http://robotframework.org/). 
+
+For more information about the command-line usage, you can run:
+```
+$ robot --help
+```
+The [Robot Framework User Guide](http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#executing-test-cases) provides full details on how to execute tests in general.
 
 ## How to Report a Bug
 
 The ETSI MEC Testing Framework project is under constant development, so it is possible that you will
-encounter a bug while using it. Please report bugs at cti_support at etsi dot org.
+encounter a bug while using it. You may report in the [Issues section](https://forge.etsi.org/rep/mec/gs032p3-robot-test-suite/issues) of the project.
+
+For any other inquiry, you may contact cti_support at etsi dot org.
 
