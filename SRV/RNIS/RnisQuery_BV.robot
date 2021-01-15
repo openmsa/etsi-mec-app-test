@@ -18,7 +18,7 @@ Request RabInfo info
     ...  Reference https://forge.etsi.org/gitlab/mec/gs012-rnis-api/blob/master/RniAPI.yaml#/definitions/RabInfo
     Get RabInfo info
     Check HTTP Response Status Code Is    200
-    Check HTTP Response Body Json Schema Is   RabInfos
+    Check HTTP Response Body Json Schema Is   RabInfo
     Check RabInfo    ${response['body']}
 
 
@@ -30,7 +30,7 @@ Request Plmn info
     Get PLMN info
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   PlmnInfos
-    Check PlmnInfo    ${response['body']}
+    Check PlmnInfo    ${response['body'][0]}
 
 
 Request S1Bearer info
@@ -43,7 +43,7 @@ Request S1Bearer info
     Check HTTP Response Body Json Schema Is   S1BearerInfos
     #log    ${response['body']}
     Check S1BearerInfo    ${response['body']}
-    
+
 Request L2Meas info
         [Documentation]   TC_MEC_SRV_RNIS_019_OK
     ...  Check that the RNIS service returns the L2 measurements information

@@ -27,8 +27,7 @@ Check RabInfo
     log    ${received_value}
     Should Be Equal As Strings   ${received_value['appInstanceId']}    ${APP_INS_ID}
     Should Not Be Empty    ${received_value['requestId']}
-    Should Be Equal As Strings    ${received_value['cellUserInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
-
+    Run Keyword If    'cellUserInfo' in ${received_value}    Should Be Equal As Strings    ${received_value['cellUserInfo'][0]['ecgi']['cellId']}    ${CELL_ID}
 
 Check PlmnInfo
     [Arguments]    ${received_value}
