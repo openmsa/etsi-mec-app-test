@@ -8,7 +8,7 @@ Resource    ../../pics.txt
 Resource    ../../GenericKeywords.robot
 Resource    resources/RadioNetworkInformationAPI.robot
 Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_verify=false
-
+Library     String
 
 
 *** Test Cases ***
@@ -79,7 +79,10 @@ Post RNIS subscription request
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${body}    Get File    jsons/CellChangeSubscriptionRequest.json 
+    ${body}=    Get File    jsons/CellChangeSubscriptionRequest.json
+    ${body}=    Replace String    ${body}    \${HREF}    ${HREF}
+    ${body}=    Replace String    ${body}    \${LINKS_SELF}    ${LINKS_SELF}
+    Log    ${body}
     Post    ${apiRoot}/rni/${apiVersion}/subscriptions    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
@@ -94,7 +97,7 @@ Get Individual RNIS Subscription
     Get    ${apiRoot}/rni/${apiVersion}/subscriptions/${SUBSCRIPTION_ID}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
-    
+
 
 Update Individual RNIS Subscription
     Should Be True    ${PIC_RNIS_SPECIFIC_SUBSCRIPTION} == 1
@@ -102,10 +105,13 @@ Update Individual RNIS Subscription
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
     ${body}    Get File    jsons/UpdateCellChangeSubscriptionRequest.json
+    ${body}=    Replace String    ${body}    \${HREF}    ${HREF}
+    ${body}=    Replace String    ${body}    \${LINKS_SELF}    ${LINKS_SELF}
+    Log    ${body}
     Put    ${apiRoot}/rni/${apiVersion}/subscriptions/${SUBSCRIPTION_ID}    ${body}
     ${output}=    Output    response
     Set Suite Variable    ${response}    ${output}
-    
+
 
 Delete Individual RNIS Subscription
     Should Be True    ${PIC_RNIS_SPECIFIC_SUBSCRIPTION} == 1
