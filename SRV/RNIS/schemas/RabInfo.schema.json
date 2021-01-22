@@ -57,10 +57,7 @@
                     "properties": {
                       "type": {
                         "description": "Numeric value (0-255) corresponding to specified type of identifier as following:\n0 = reserved.\n1= UE_IPv4_ADDRESS.\n2 = UE_IPV6_ADDRESS.\n3 = NATED_IP_ADDRESS.\n4 = GTP_TEID.",
-                        "enum": [
-                          "SEE_DESCRIPTION"
-                        ],
-                        "type": "string",
+                        "type": "number",
                         "x-etsi-mec-cardinality": "1",
                         "x-etsi-mec-origin-type": "Enum"
                       },
