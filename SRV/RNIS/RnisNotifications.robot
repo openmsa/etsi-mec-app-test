@@ -10,7 +10,8 @@ Library     REST    ${MEC-APP_SCHEMA}://${MEC-APP_HOST}:${MEC-APP_PORT}    ssl_v
 Library     BuiltIn
 Library     OperatingSystem
 Library     MockServerLibrary
-
+Suite Setup    Create Mock Session    ${callback_uri}:${callback_port}
+Test Teardown  Reset All Requests
 
 *** Test Cases ***
 Cell change notification
@@ -21,7 +22,6 @@ Cell change notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/CellChangeNotification.schema.json
     Log  Creating mock request and response to handle Cell change notification
-    Create Mock Session    ${callback_uri}${callback_port}
     &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=&{appjson_hdrs}    status_code=204
@@ -41,7 +41,7 @@ RAB Establishment notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/RabEstNotification.schema.json
     Log  Creating mock request and response to handle RAB establishment notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/rab_est    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/rab_est    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -60,7 +60,7 @@ RAB modification notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/RabModNotification.schema.json
     Log  Creating mock request and response to handle RAB modification notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/rab_mod    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/rab_mod    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -79,7 +79,7 @@ RAB release notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/RabRelNotification.schema.json
     Log  Creating mock request and response to handle RAB release notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/rab_rel    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/rab_rel    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -98,7 +98,7 @@ UE measurement notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/MeasRepUeNotification.schema.json
     Log  Creating mock request and response to handle UE measurement notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/MeasRepUeNotification    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/MeasRepUeNotification    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -117,7 +117,7 @@ UE timing advance notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/MeasTaSubscription.schema.json
     Log  Creating mock request and response to handle UE timing advance notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/MeasTaNotification    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/MeasTaNotification    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -136,7 +136,7 @@ UE carrier aggregation reconfiguration notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/CaReconfSubscription.schema.json
     Log  Creating mock request and response to handle UE carrier aggregation reconfiguration notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/CaReconfSubscription    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/CaReconfSubscription    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -155,7 +155,7 @@ S1-U bearer notification
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/S1BearerSubscription.schema.json
     Log  Creating mock request and response to handle S1-U bearer notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/S1BearerSubscription    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/S1BearerSubscription    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
     &{rsp}=    Create Mock Response    headers=${appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
@@ -174,9 +174,9 @@ TC_MEC_SRV_RNIS_009_OK
     Should Be True    ${PIC_RNIS_NOTIFICATIONS} == 1
     ${json}=    Get File    schemas/NrMeasRepUeSubscription.schema.json
     Log  Creating mock request and response to handle UE Measurement notification
-    &{req}=    Create Mock Request Matcher    POST    ${callback_uri}${callback_endpoint}/meas_rep_ue    body_type="JSON_SCHEMA"    body=${json}
+    &{req}=    Create Mock Request Matcher    POST    ${callback_endpoint}/meas_rep_ue    body_type="JSON_SCHEMA"    body=${json}
     &{appjson_hdrs}=    Create Dictionary    Content-type=application/json
-    &{rsp}=    Create Mock Response    &{appjson_hdrs}    status_code=204
+    &{rsp}=    Create Mock Response    headers=&{appjson_hdrs}    status_code=204
     Create Mock Expectation    ${req}    ${rsp}
     Wait Until Keyword Succeeds    ${total_polling_time}    ${polling_interval}    Verify Mock Expectation    ${req}
     Log  Verifying results
