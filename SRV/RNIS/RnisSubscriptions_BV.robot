@@ -20,7 +20,9 @@ Request RNIS subscription list
     Get RNIS subscription list
     Check HTTP Response Status Code Is    200
     Check HTTP Response Body Json Schema Is   SubscriptionLinkList
-    Check Subscription    ${response['body']}    ${SUBSCRIPTION_VALUE}
+    # The following step is faulty in the design, thus it is commented. It is kept since
+    # it is required by the Test Purpose TP_MEC_SRV_RNIS_011_OK
+    # Check Subscription    ${response['body']}    ${SUBSCRIPTION_VALUE}
 
 
 Create RNIS subscription
@@ -28,9 +30,9 @@ Create RNIS subscription
     ...  Check that the RNIS service creates a new RNIS subscription
     ...  ETSI GS MEC 012 2.1.1, clause 7.6.3.4
     ...  Reference https://forge.etsi.org/rep/mec/gs012-rnis-api/blob/automatic_generation/RniAPI.yaml
-    Post RNIS subscription request    CellChangeSubscription
+    Post RNIS subscription request    CellChangeSubscriptionRequest
     Check HTTP Response Status Code Is    201
-    Check HTTP Response Body Json Schema Is   CellChangeSubscriptionRequest
+    Check HTTP Response Body Json Schema Is   CellChangeSubscription
     Check CellChangeSubscription    ${response['body']}
 
 
@@ -79,7 +81,8 @@ Post RNIS subscription request
     Set Headers    {"Accept":"application/json"}
     Set Headers    {"Content-Type":"application/json"}
     Set Headers    {"Authorization":"${TOKEN}"}
-    ${body}=    Get File    jsons/CellChangeSubscriptionRequest.json
+    ${json_file} =    Catenate    SEPARATOR=    jsons/    ${content}    .json
+    ${body}=    Get File    ${json_file}
     ${body}=    Replace String    ${body}    \${HREF}    ${HREF}
     ${body}=    Replace String    ${body}    \${LINKS_SELF}    ${LINKS_SELF}
     Log    ${body}

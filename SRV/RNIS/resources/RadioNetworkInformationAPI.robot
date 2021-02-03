@@ -19,7 +19,7 @@ Check Subscription
 
 Check CellChangeSubscription
     [Arguments]    ${received_value}
-    Should Be Equal    ${received_value['_links']['self']}    ${LINKS_SELF}
+    Should Be Equal    ${received_value['_links']['self']['href']}    ${LINKS_SELF}
 
 
 Check RabInfo
